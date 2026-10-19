@@ -35,7 +35,7 @@ On the reference layout, a three-well protocol is about 1,200 waypoints:
 # Train (about 2.5 minutes on a large CPU box; any machine with PyTorch works).
 uv run --with torch --with numpy python train.py --out ik.pt
 
-# Deploy. Credentials come from `chalk config`, or CHALK_CLIENT_ID / CHALK_CLIENT_SECRET.
+# Deploy. Credentials come from your existing `chalk login`, or CHALK_CLIENT_ID / CHALK_CLIENT_SECRET.
 ./deploy.py
 ```
 
@@ -67,3 +67,10 @@ orientation terms to the loss. The training recipe stays the same.
 ## License
 
 Apache-2.0. The page loads [three.js](https://threejs.org) (MIT) from a CDN.
+
+## Local authentication
+
+The SDK reads credentials, API host, and the selected environment from your existing
+`chalk login` in `~/.chalk.yml`, including project-scoped and default logins.
+For unattended runs, `CHALK_CLIENT_ID` and `CHALK_CLIENT_SECRET` remain supported.
+The examples use the current environment selected by your Chalk login.
