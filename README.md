@@ -35,7 +35,7 @@ On the reference layout, a three-well protocol is about 1,200 waypoints:
 # Train (about 2.5 minutes on a large CPU box; any machine with PyTorch works).
 uv run --with torch --with numpy python train.py --out ik.pt
 
-# Deploy. Credentials come from the SDK’s ambient credentials from `chalk login`, or CHALK_CLIENT_ID / CHALK_CLIENT_SECRET.
+# Deploy. Credentials come from your existing `chalk login`, or CHALK_CLIENT_ID / CHALK_CLIENT_SECRET.
 ./deploy.py
 ```
 
