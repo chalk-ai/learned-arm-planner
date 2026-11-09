@@ -147,6 +147,16 @@ def load_model() -> K.IKNet:
 
 
 app = FastAPI()
+
+
+# This host exists only to back a chalk.ai/demos page; keep it out of search results.
+@app.middleware("http")
+async def add_noindex_header(request, call_next):
+    response = await call_next(request)
+    response.headers["X-Robots-Tag"] = "noindex, nofollow"
+    return response
+
+
 state["model"] = load_model()
 torch.set_num_threads(int(os.environ.get("TORCH_THREADS", "2")))
 # The first autograd pass pays seconds of one-time setup; take it at boot, not on a request.
